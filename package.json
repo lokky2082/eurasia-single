@@ -6,9 +6,11 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit"
+    "test:unit": "vue-cli-service test:unit",
+    "create:sprite": "svg-sprite-generate -d src/icons -o public/sprite.svg"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "vue": "^2.5.17"
   },
   "devDependencies": {
@@ -19,6 +21,7 @@
     "@vue/eslint-config-prettier": "^3.0.5",
     "@vue/test-utils": "^1.0.0-beta.20",
     "babel-core": "7.0.0-bridge.0",
+    "svg-sprite-generator": "0.0.7",
     "babel-jest": "^23.0.1",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
