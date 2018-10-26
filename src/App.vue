@@ -1,31 +1,43 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <Main/>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Menu :show="showMenu" @close="toggleMenu(false)"/>
+    <Main @show-menu="toggleMenu(true)"/>
+    <ParalaxBlock/>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
 import Main from "./components/Main.vue";
+import Menu from "./components/Menu.vue";
+import ParalaxBlock from "./components/ParalaxBlock.vue";
 export default {
   name: "app",
   components: {
-    HelloWorld,
-    Main
+    Main,
+    Menu,
+    ParalaxBlock
+  },
+  data() {
+    return {
+      showMenu: false
+    }
+  },
+  methods: {
+    toggleMenu(val) {
+      console.log(val)
+      this.showMenu = val
+    }
   }
 };
 </script>
 
 <style lang="scss">
-
+@import '@/assets/styles/vars.scss';
+@import '@/assets/styles/common.scss';
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: #5D5354;
 }
 </style>
