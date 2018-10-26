@@ -7,3 +7,8 @@ export const getMainBenefits = () => {
     return res.data
   });
 };
+export const getComfort = () => {
+  return instance.get("comfort.json").then(res => {
+    return res.data
+  });
+};

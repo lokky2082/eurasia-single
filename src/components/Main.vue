@@ -12,7 +12,7 @@
       <div class="main_title">
          <span>ЕВР</span><span class="main_title_big">А</span><span>ЗИЯ</span>
       </div>
-      <MainBenefits/>
+      <BenefitList :list="list"/>
       <div class="main-left_bot">
         <p>Срок сдачи: 2 квартал 2020 года</p>
         <h3>От <span class="accent-text-color">2 145 000</span> рублей</h3>
@@ -35,10 +35,24 @@
 </template>
 
 <script>
-import MainBenefits from "@/components/MainBenefits.vue";
+import { getMainBenefits } from '@/actions.js'
+
+const BenefitList = () => import(
+  /* webpackChunkName: "BenefitList" */ '@/components/BenefitList.vue'
+)
 export default {
   components: {
-     MainBenefits
+     BenefitList
+  },
+   data () {
+    return {
+      list: null
+    }
+  },
+  created () {
+   getMainBenefits().then(res => {
+     this.list = res
+   })
   },
   methods: {
     showMenu() {

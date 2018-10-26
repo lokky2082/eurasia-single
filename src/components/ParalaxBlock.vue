@@ -4,7 +4,7 @@
       <img src="./../assets/bg.png"/>
     </parallax>
     <div class="with-paralax_content">
-      
+       <slot></slot>
     </div>
   </div>
 </template>
@@ -19,5 +19,12 @@ export default {
 </script>
 
 <style>
-
+.with-paralax {
+  position: relative;
+}
+  .with-paralax_content {
+    position: absolute;
+    top:0;
+    width: 100%;
+  }
 </style>

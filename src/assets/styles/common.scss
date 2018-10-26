@@ -9,11 +9,20 @@ body {
   padding: 0;
   margin: 0;
 }
+h2 {
+  font-size: 50px;
+  margin-top: 1em;
+}
 h3 {
   font-size: 32px;
 }
+h4 {
+  font-size: 24px;
+  margin-bottom: 1em;
+}
 p {
   margin-bottom: 0.5em;
+  line-height: 1.4;
 }
 .deco-title {
  font-family: 'EB Garamond', serif;
@@ -21,6 +30,9 @@ p {
 }
 .accent-text-color {
   color: $accent;
+}
+.grey-text-color {
+  color: $light-grey;
 }
 .full-screen {
   width:100%;
@@ -106,6 +118,7 @@ p {
 .close:after {
   transform: rotate(-45deg);
 }
+
 .fs32 {
   font-size: 32px;
 }
