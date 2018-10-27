@@ -1,11 +1,10 @@
 <template>
-
   <div class="images-content-item" :class="{reverse: reverse}" ref="row">
     <div class="images-content-words accent-text-color">
       {{item.word}}
     </div>
     <div class="images-content-item_img">
-       <ImgDeco :img="item.src" :alt="item.title"/>
+       <ImgDeco :img="item.src" :alt="item.title" :stripsPosition="reverse ? 'right': 'left'"/>
     </div>
     <div class="images-content-item_text">
       <h4>{{item.title}}</h4>
@@ -68,6 +67,7 @@ export default {
    position: absolute;
    font-size: 80px;
    opacity: 0.8;
+
  }
  .images-content-item_img {
    width:640px;
@@ -78,5 +78,8 @@ export default {
  .images-content-item_text {
    width:400px;
    margin-left: 30px;
+ }
+ .images-content-words {
+   opacity:0.4;
  }
 </style>

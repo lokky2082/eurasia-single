@@ -67,6 +67,7 @@ export default {
   .main  {
     display: flex;
     justify-content: space-between;
+    min-height: 900px;
     & > * {
       height: 100%;
     }

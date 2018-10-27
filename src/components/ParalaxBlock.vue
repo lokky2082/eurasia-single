@@ -1,8 +1,8 @@
 <template>
   <div class="with-paralax">
-    <parallax :speedFactor="0.15">
-      <img src="./../assets/bg.png"/>
-    </parallax>
+    <div class="with-paralax-parallax">
+      <!--<img src="./../assets/bg.png"/>-->
+    </div>
     <div class="with-paralax_content">
        <slot></slot>
     </div>
@@ -18,13 +18,23 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .with-paralax {
   position: relative;
+  padding: 1px 0;
+  background: url(./../assets/bg.png);
+  background-attachment: fixed;
 }
-  .with-paralax_content {
-    position: absolute;
-    top:0;
-    width: 100%;
+.with-paralax-parallax {
+  position: absolute;
+  top:0;
+  width: 100%;
+  z-index: -1;
+  & img {
+    width:100%;
   }
+}
+.with-paralax_content {
+  width: 100%;
+}
 </style>

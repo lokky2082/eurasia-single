@@ -1,6 +1,11 @@
 import axios from "axios";
+console.log(process.env.NODE_ENV)
+let url = '/data/'
+if (process.env.NODE_ENV === 'development') {
+  url = 'http://localhost:8080/data/'
+}
 const instance = axios.create({
-  baseURL: 'http://localhost:8080/data/'
+  baseURL: url
 });
 export const getMainBenefits = () => {
   return instance.get("mainbenefits.json").then(res => {
@@ -9,6 +14,26 @@ export const getMainBenefits = () => {
 };
 export const getComfort = () => {
   return instance.get("comfort.json").then(res => {
+    return res.data
+  });
+};
+export const getEntrance = () => {
+  return instance.get("entrance.json").then(res => {
+    return res.data
+  });
+};
+export const getSecurity = () => {
+  return instance.get("security.json").then(res => {
+    return res.data
+  });
+};
+export const getParking = () => {
+  return instance.get("parking.json").then(res => {
+    return res.data
+  });
+};
+export const getContacts = () => {
+  return instance.get("contacts.json").then(res => {
     return res.data
   });
 };

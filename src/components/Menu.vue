@@ -3,14 +3,27 @@
     <div class="menu_close" @click="close">
        <div class="close"></div>
     </div>
-    <ul class="menu-list">
-      <li class="active" ><span >О жилых башнях</span></li>
-      <li><span>Квартиры</span></li>
-      <li><span>Подъезды</span></li>
-      <li><span>Паркинг</span></li>
-      <li><span>Инфраструктура</span></li>
-      <li><span>Контакты</span></li>
-    </ul>
+    <scrollactive class="menu-list">
+      <a href="#home" class="scrollactive-item">
+        <span>О жилых башнях</span>
+      </a>
+      <a href="#flats" class="scrollactive-item">
+         <span>Квартиры</span>
+      </a>
+      <a href="#entrance" class="scrollactive-item">
+         <span>Подъезды</span>
+      </a>
+       <a href="#security" class="scrollactive-item">
+         <span>Безопасность</span>
+      </a>
+       <a href="#parking" class="scrollactive-item">
+         <span>Паркинг</span>
+      </a>
+      <a href="#contacts" class="scrollactive-item">
+        <span>Контакты</span>
+      </a>
+    </scrollactive>
+   
     <div class="menu_bot">
       <p>Отдел продаж</p>
       <a class="fs32" href="tel:+73433003146">+7 (343) 3003-146</a>
@@ -63,9 +76,12 @@ export default {
   font-size: 14px;
   color: #fff;
 }
-.menu-list li {
+.menu-list .scrollactive-item {
   padding: 15px 0;
   cursor: pointer;
+  display: block;
+  color: inherit;
+  text-decoration: none;
   & span {
     // background: red;
     transition: transform 0.5s ease;
@@ -77,7 +93,7 @@ export default {
      transform: scale(1.5);
     }
   }
-  &.active {
+  &.is-active {
     color: $dark-grey;
     span {
      display: block;
