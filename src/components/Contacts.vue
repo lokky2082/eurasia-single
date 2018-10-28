@@ -31,12 +31,14 @@ export default {
 <style lang="scss">
   .contacts {
     display: flex;
+    padding-bottom: 50px;
   }
   @supports (display: grid) {
   .contacts {
     display: grid;
     grid-template-columns: 1.4fr 1fr;
     grid-gap: 150px;
+    align-content: end;
    }
   }
 </style>

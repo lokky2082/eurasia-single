@@ -2,7 +2,7 @@ import axios from "axios";
 console.log(process.env.NODE_ENV)
 let url = '/data/'
 if (process.env.NODE_ENV === 'development') {
-  url = 'http://localhost:8080/data/'
+  url = 'http://localhost:8081/data/'
 }
 const instance = axios.create({
   baseURL: url
@@ -34,6 +34,16 @@ export const getParking = () => {
 };
 export const getContacts = () => {
   return instance.get("contacts.json").then(res => {
+    return res.data
+  });
+};
+export const getInfra = () => {
+  return instance.get("infra.json").then(res => {
+    return res.data
+  });
+};
+export const getMain = () => {
+  return instance.get("main.json").then(res => {
     return res.data
   });
 };

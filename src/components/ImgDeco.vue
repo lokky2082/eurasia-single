@@ -5,12 +5,12 @@
         <span></span>
         <span></span>
     </div>
-     <img :src="img" :alt="alt"/>   
+      <LazyImg :img="{src: img, title:alt}"/>
   </div>
 </template>
 
 <script>
-
+import LazyImg from './LazyImg.vue'
 export default {
   name: 'img-deco',
   props: {
@@ -29,21 +29,27 @@ export default {
   },
   data () {
     return {
-      observer: null
+      observer: null,
+      src: ''
     }
   },
+  components: {
+    LazyImg
+  },
   created () {
-    this.observer = new IntersectionObserver((entries) => {
+    const config = {
+      rootMargin: '-200px',
+      threshold:  [0, 0.5, 0.5, 0.75, 1]
+    };
+    this.observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.intersectionRatio > 0) {
-          console.log('in')
           entry.target.classList.add('grow');
         } else {
-          console.log('out')
           entry.target.classList.remove('grow');
         }
       });
-    });
+    }, config);
    
   },
   mounted () {

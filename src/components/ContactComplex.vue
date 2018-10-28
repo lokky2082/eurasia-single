@@ -50,6 +50,12 @@ export default {
 </script>
 
 <style lang="scss">
+  .contacts-complex {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 40px;
+  }
   .contacts-complex_address {
     margin-top: 20px;
     display: flex;
@@ -65,7 +71,7 @@ export default {
   }
   .complex-map {
     width:100%;
-    height:380px;
+    height:300px;
     margin-top: 50px;
   }
 </style>

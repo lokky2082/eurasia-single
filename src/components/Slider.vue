@@ -3,7 +3,7 @@
     <div class="slider-back">
       <img src="../assets/slider-back.svg" alt="Башни Евразия"/>
     </div>
-    <swiper :options="swiperOption" ref="mySwiper" @slideChange="showContent">
+    <swiper :options="swiperOption"  ref="mySwiper" @slideChange="showContent">
        <swiper-slide v-for="(slide, index) in list" :key="index">
          <div class="slider_content">
           <div class="slider_img">
@@ -16,11 +16,11 @@
          </div>
        </swiper-slide>
        <div class="nav-holder" slot="scrollbar">
-         <div class="arrow-left"></div>
+         <div class="arrow-left" :class="{inactive: active===0}"></div>
          <div class="nav-holder_number">
            {{active+1}}/{{list.length}}
          </div>
-         <div class="arrow-right"></div>
+         <div class="arrow-right" :class="{inactive: active===list.length - 1}"></div>
        </div>
     </swiper>
   </section>
@@ -42,6 +42,11 @@ export default {
   data () {
     return {
       swiperOption: {
+        speed: 1300,
+        effect: 'fade',
+         fadeEffect: {
+          crossFade: true
+        },
         navigation: {
           nextEl: '.arrow-right',
           prevEl: '.arrow-left'
@@ -61,18 +66,30 @@ export default {
     ImgDeco
   },
   mounted () {
-    console.log('this is current swiper instance object', this.swiper)
   },
   methods: {
     showContent () {
       this.active = this.swiper.activeIndex
-      console.log('show')
     }
   }
 }
 </script>
 
 <style lang="scss">
+
+@import '@/assets/styles/vars.scss';
+.arrow-left {
+ color: $accent;
+ &.inactive {
+   color: $dark-grey;
+ }
+}
+.arrow-right {
+  color: $accent;
+  &.inactive {
+   color: $dark-grey;
+ }
+}
 .slider {
   position: relative;
   width:100%;

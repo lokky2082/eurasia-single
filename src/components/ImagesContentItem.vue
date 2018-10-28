@@ -4,7 +4,30 @@
       {{item.word}}
     </div>
     <div class="images-content-item_img">
-       <ImgDeco :img="item.src" :alt="item.title" :stripsPosition="reverse ? 'right': 'left'"/>
+      <swiper v-if="item.slider" 
+      :options="swiperOption" 
+      ref="mySwiper"
+      >
+        <swiper-slide v-for="(slide, index) in item.slider" :key="index">
+          <LazyImg :img="{src: slide, title:item.title}"/>
+        </swiper-slide>
+         <div class="slider-pagination" slot="pagination">
+           <div class="slider-pagination_cont">
+              <div class="slider-pagination_text">Комнат:</div>
+              <div class="slider-pagination_bullets">
+                  <div class="slider-bullet" 
+                  v-for="(slide, index) in item.slider" 
+                  :key="index+'bull'"
+                  @click="showContent(index)"
+                  :class="{active: active===index}"
+                  >
+                    {{index+1}}
+                  </div>
+              </div>
+           </div>
+         </div>
+      </swiper>
+       <ImgDeco v-else :img="item.src" :alt="item.title" :stripsPosition="reverse ? 'right': 'left'"/>
     </div>
     <div class="images-content-item_text">
       <h4>{{item.title}}</h4>
@@ -14,8 +37,13 @@
 </template>
 
 <script>
+import 'swiper/dist/css/swiper.css'
 import ImgDeco from './ImgDeco.vue'
+import LazyImg from './LazyImg.vue'
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import { ObserverMix } from './mixins.js'
 export default {
+  mixins: [ObserverMix],
   props: {
     item: {
       type: Object
@@ -26,33 +54,41 @@ export default {
   },
   data () {
     return {
-      observer: null
+      swiperOption: {
+        pagination: {
+          el: '.swiper-pagination',
+          
+        },
+        effect: 'fade',
+        fadeEffect: {
+          crossFade: true
+        },
+      },
+      active: 0
     }
   },
-  created () {
-    this.observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.intersectionRatio > 0) {
-          console.log('in')
-          entry.target.classList.add('in-view');
-        } else {
-          console.log('out')
-          entry.target.classList.remove('in-view');
-        }
-      });
-    });
-  },
-  mounted () {
-    let row = this.$refs.row
-    this.observer.observe(row);
-  },
   components: {
-    ImgDeco
+    ImgDeco,
+    swiper,
+    swiperSlide,
+    LazyImg
+  },
+  computed: {
+    swiper() {
+      return this.$refs.mySwiper.swiper
+    }
+  },
+  methods: {
+    showContent (val) {
+    this.active = val
+     this.swiper.slideTo(val, 1000, false)
+    }
   }
 }
 </script>
 
 <style lang="scss">
+@import '@/assets/styles/vars.scss';
  .images-content-item {
    position: relative;
    display: flex;
@@ -80,6 +116,29 @@ export default {
    margin-left: 30px;
  }
  .images-content-words {
-   opacity:0.4;
+   opacity:0.3;
+   font-family: 'EB Garamond', serif;
+ }
+ .slider-pagination_cont, .slider-pagination_bullets {
+   display:  flex;
+   justify-content: center;
+   align-items: center;
+ }
+ .slider-pagination {
+   margin-top: 20px;
+ }
+ .slider-bullet {
+   width: 32px;
+   height: 32px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 50%;
+   border: 2px solid currentColor;
+   margin-left: 10px;
+   cursor: pointer;
+   &.active {
+     color: $accent;
+   }
  }
 </style>

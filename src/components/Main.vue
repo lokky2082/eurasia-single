@@ -1,26 +1,25 @@
 <template>
-  <section class="main full-screen" >
+  <section class="main full-screen grey-bg" >
     <div class="main-left">
-      <header class="main_header" @click="showMenu">
-        <div class="humburger">
+      <header class="main_header">
+        <div class="humburger" @click="showMenu">
           <span></span>
           <span></span>
           <span></span>
         </div>
-        <a href="tel:+73433003146">+7 (343) 3003-146</a>
+        <a v-if="main" :href="'tel:'+ main.phonerobot">{{main.phone}}</a>
       </header>
       <div class="main_title">
          <span>ЕВР</span><span class="main_title_big">А</span><span>ЗИЯ</span>
       </div>
       <BenefitList :list="list"/>
       <div class="main-left_bot">
-        <p>Срок сдачи: 2 квартал 2020 года</p>
-        <h3>От <span class="accent-text-color">2 145 000</span> рублей</h3>
+        <p>Срок сдачи:{{main.ready}}</p>
+        <h3>От <span class="accent-text-color">{{main.priceFrom}}</span> рублей</h3>
         <div class="main-left_arr">
            <div class="scroll-down"></div>
         </div>
       </div>
-     
     </div>
     <div class="main-right">
       <div class="main-right_imgs">
@@ -30,17 +29,29 @@
       <div class="main-img_text">
         <p>Всё, что нужно для <span class="accent-text-color">счастливой</span> семейной жизни в мегаполисе</p>
       </div>
+      <a :href="main.logoLink" class="main-logo">
+       <img src="./../assets/logo_active.png" alt="Актив строй"/>
+      </a>
     </div>
   </section>
 </template>
 
 <script>
 import { getMainBenefits } from '@/actions.js'
-
+import { ObserverMix } from './mixins.js'
 const BenefitList = () => import(
   /* webpackChunkName: "BenefitList" */ '@/components/BenefitList.vue'
 )
 export default {
+  props: {
+    main: {
+      type: Object,
+      default () {
+        return {}
+      }
+    }
+  },
+  mixins: [ObserverMix],
   components: {
      BenefitList
   },
@@ -56,7 +67,6 @@ export default {
   },
   methods: {
     showMenu() {
-      console.log('test')
       this.$emit('show-menu')
     }
   }
@@ -73,12 +83,32 @@ export default {
     }
   }
   .main_title {
-    width:423px;
+     width:423px;
     height:205px;
     margin: 48px auto 26px auto;
     background: url(../assets/logo_bg.svg);
     background-size: contain;
+    display: flex;
+    color: #fff;
+    font-weight: 700;
+    align-items: center;
+    justify-content: center;
+    font-size: 45px;
+    transition: text-shadow 5s ease;
+    text-shadow: rgba(236, 204, 17, 0.4) 0px 0px 0, 
+    rgba(236, 204, 17, 0.5) 0px 0px 0,
+    rgba(236, 204, 17, 0.5) 0px 0px 0,
+     rgba(236, 204, 17, 0.5) 0px 0px 0,
+     2px 2px 2px rgba(0,0,0,0.8);
   }
+  .in-view .main_title {
+     text-shadow: rgba(236, 204, 17, 0.4) 0px 0px 10px, 
+    rgba(236, 204, 17, 0.5) 0px 0px 20px,
+    rgba(236, 204, 17, 0.5) 0px 0px 30px,
+     rgba(236, 204, 17, 0.5) 0px 0px 40px,
+     2px 2px 2px rgba(0,0,0,0.8);
+  }
+  
   .main-left {
     width: 35%;
     background: url(../assets/white_plaster.png);
@@ -125,17 +155,12 @@ export default {
       right:0;
       bottom:0;
       opacity: 0;
-      animation: showImg 4s ease 1.5s 1 forwards;
     }
   }
-  .main_title {
-    display: flex;
-    color: #fff;
-    font-weight: 700;
-    align-items: center;
-    justify-content: center;
-    font-size: 45px;
-    text-shadow: #DAB73C 0px 0px 10px, #DAB73C 0px 0px 20px, #DAB73C 0px 0px 30px, #DAB73C 0px 0px 40px,  2px 2px 2px rgba(28,110,164,0);
+  .in-view {
+    .main-img.__night {
+       animation: showImg 4s ease 1.5s 1 forwards;
+    }
   }
   .main_title_big {
     font-size: 300%;
@@ -151,6 +176,12 @@ export default {
       text-decoration: none;
     }
     //color: $dark-grey;
+  }
+  .main-logo {
+    position: absolute;
+    top: 30px;
+    right:40px;
+    z-index: 1000;
   }
   @keyframes showImg {
     to {

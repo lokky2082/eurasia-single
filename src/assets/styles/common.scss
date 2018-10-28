@@ -26,7 +26,7 @@ p {
 }
 .grey-bg {
   background: url(./assets/white_plaster.png);
-  
+  box-shadow: 0 0 10px 3px rgba(0,0,0,0.3);
 }
 .pd-tb-50 {
   padding: 50px 0;
@@ -89,7 +89,7 @@ p {
   display: block;
   width: 32px;
   height: 32px;
-  border: 2px solid $accent;
+  border: 2px solid currentColor;
   background-size: 14px auto;
   border-radius: 50%;
   z-index: 2;
@@ -104,14 +104,14 @@ p {
   width: 12px;
   height: 12px;
   content: "";
-  border: 2px solid $accent;
+  border: 2px solid currentColor;
   border-width: 0 0 2px 2px;
 }
 .arrow-right {
   display: block;
   width: 32px;
   height: 32px;
-  border: 2px solid $accent;
+  border: 2px solid currentColor;
   background-size: 14px auto;
   border-radius: 50%;
   z-index: 2;
@@ -126,7 +126,7 @@ p {
   width: 12px;
   height: 12px;
   content: "";
-  border: 2px solid $accent;
+  border: 2px solid currentColor;
   border-width: 0px 2px 2px 0px;
 }
 .humburger {
@@ -250,7 +250,7 @@ p {
   padding-left: 30px;
   margin-bottom: 25px;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 16px;
   
 }
 .control input {
@@ -366,7 +366,21 @@ p {
 .select select:disabled ~ .select__arrow {
   border-top-color: #ccc;
 }
-
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  bottom: 0;
+  padding: 10px;
+  width:100%;
+  color:#fff;
+  a {
+    color:currentColor;
+  }
+}
+.footer_column {
+  display: flex;
+}
 @keyframes bounce {
   0%,
   100%,

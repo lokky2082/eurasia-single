@@ -21,7 +21,7 @@ export default {
 <style lang="scss">
 .with-paralax {
   position: relative;
-  padding: 1px 0;
+  padding: 100px 1px 1px 1px;
   background: url(./../assets/bg.png);
   background-attachment: fixed;
 }

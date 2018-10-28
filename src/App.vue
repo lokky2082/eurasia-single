@@ -2,9 +2,10 @@
   <div id="app">
     <div id="home"></div>
     <Menu :show="showMenu" @close="toggleMenu(false)"/>
-    <Main @show-menu="toggleMenu(true)"/>
+    <Main @show-menu="toggleMenu(true)" v-if="main" :main="main"/>
     <div id="flats"></div>
     <paralax-block>
+      <StickyMenu @show-menu="toggleMenu(true)"/>
        <div class="wr-content">
          <h2 class="grey-text-color">Квартиры,</h2>
          <h3 class="grey-text-color">созданные для комфорта и уюта</h3>
@@ -48,15 +49,16 @@
          <Contacts/>
        </div>
     </paralax-block>
-     <div id="infra"></div>
+    <Infra/>
   </div>
 </template>
 
 <script>
-import { getComfort, getEntrance,  getSecurity, getParking } from '@/actions.js'
-import Main from "./components/Main.vue";
-import Menu from "./components/Menu.vue";
-import ParalaxBlock from "./components/ParalaxBlock.vue";
+import { getComfort, getMain, getEntrance,  getSecurity, getParking } from '@/actions.js'
+import Main from "./components/Main.vue"
+import Menu from "./components/Menu.vue"
+import ParalaxBlock from "./components/ParalaxBlock.vue"
+import StickyMenu from "./components/StickyMenu.vue"
 const ImagesContent = () => import(
   /* webpackChunkName: "ImagesContent" */ '@/components/ImagesContent.vue'
 )
@@ -72,6 +74,9 @@ const Modal = () => import(
 const OrderForm = () => import(
   /* webpackChunkName: "OrderForm" */ '@/components/OrderForm.vue'
 )
+const Infra = () => import(
+  /* webpackChunkName: "Infra" */ '@/components/Infra.vue'
+)
 export default {
   name: "app",
   components: {
@@ -82,7 +87,9 @@ export default {
     Slider,
     Contacts,
     Modal,
-    OrderForm
+    OrderForm,
+    Infra,
+    StickyMenu
   },
   data() {
     return {
@@ -91,10 +98,12 @@ export default {
       sliderEntrance: null,
       securityList: null,
       parkingList: null,
-      showmodal: false
+      showmodal: false,
+      main: null
     }
   },
   created () {
+    
     getComfort().then(res => {
      this.comfortList = res
     })
@@ -107,6 +116,19 @@ export default {
     getParking().then(res => {
      this.parkingList = res
     })
+    getMain().then(res => {
+     this.main = res
+    })
+  },
+  mounted () {
+    setTimeout(()=>{
+      let preloder = document.getElementById('preloader')
+      preloader.classList.add('hide')
+    }, 500)
+    setTimeout(()=>{
+      let preloder = document.getElementById('preloader')
+      preloader.style.display = 'none'
+    }, 700)
   },
   methods: {
     toggleMenu(val) {
@@ -127,10 +149,12 @@ body {
   
 }
 #app {
-  font-family: 'Roboto', sans-serif;;
+  font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #5D5354;
+  width: 100%;
+  overflow: hidden;
 }
 .wr-content {
   max-width: 1300px;
