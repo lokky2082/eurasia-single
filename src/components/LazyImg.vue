@@ -20,7 +20,7 @@ export default {
   },
    created () {
     const config = {
-      rootMargin: '100px'
+      rootMargin: '300px'
     };
     this.observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
