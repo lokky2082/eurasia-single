@@ -45,7 +45,7 @@ p {
   color: $accent;
 }
 .grey-text-color {
-  color: $light-grey;
+  color: $dark-grey;
 }
 .full-screen {
   width:100%;
@@ -142,7 +142,7 @@ p {
   & > * {
     display: block;
     width: 30px;
-    height:4px;
+    height:3px;
     background: $accent;
     border-radius: 8px;
   }

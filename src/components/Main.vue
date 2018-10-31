@@ -3,14 +3,13 @@
     <div class="main-left">
       <header class="main_header">
         <div class="humburger" @click="showMenu">
-          <span></span>
-          <span></span>
-          <span></span>
+         
         </div>
         <a v-if="main" :href="'tel:'+ main.phonerobot">{{main.phone}}</a>
       </header>
       <div class="main_title">
-         <span>ЕВР</span><span class="main_title_big">А</span><span>ЗИЯ</span>
+         <p>Жилые башни</p>
+         <p><span>ЕВР</span><span class="main_title_big">А</span><span>ЗИЯ</span></p>
       </div>
       <BenefitList :list="list"/>
       <div class="main-left_bot">
@@ -30,7 +29,7 @@
         <p>Всё, что нужно для <span class="accent-text-color">счастливой</span> семейной жизни в мегаполисе</p>
       </div>
       <a :href="main.logoLink" class="main-logo">
-       <img src="./../assets/logo_active.png" alt="Актив строй"/>
+       <img src="./../assets/logo-01.svg" alt="Актив строй"/>
       </a>
     </div>
   </section>
@@ -83,23 +82,41 @@ export default {
     }
   }
   .main_title {
-     width:423px;
+    width:423px;
     height:205px;
     margin: 48px auto 26px auto;
     background: url(../assets/logo_bg.svg);
     background-size: contain;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     color: #fff;
     font-weight: 700;
     align-items: center;
     justify-content: center;
-    font-size: 45px;
+    position: relative;
     transition: text-shadow 5s ease;
     text-shadow: rgba(236, 204, 17, 0.4) 0px 0px 0, 
     rgba(236, 204, 17, 0.5) 0px 0px 0,
     rgba(236, 204, 17, 0.5) 0px 0px 0,
      rgba(236, 204, 17, 0.5) 0px 0px 0,
      2px 2px 2px rgba(0,0,0,0.8);
+     p {
+       margin: 0;
+     }
+     p:nth-child(1) {
+       position: absolute;
+       top: 20px;
+       left: 62px;
+       font-size: 32px;
+     }
+     p:nth-child(2) {
+      display: flex;
+      font-size: 48px;
+      align-items: center;
+      justify-content: center;
+     }
   }
   .in-view .main_title {
      text-shadow: rgba(236, 204, 17, 0.4) 0px 0px 10px, 

@@ -9,47 +9,43 @@
        <div class="wr-content">
          <h2 class="grey-text-color">Квартиры,</h2>
          <h3 class="grey-text-color">созданные для комфорта и уюта</h3>
-         <ImagesContent :list="comfortList"/>
+         <ImagesContent @showmodal="modal" :list="comfortList"/>
        </div>
     </paralax-block>
      <div id="entrance"></div>
     <section class="grey-bg pd-tb-50">
       <div class="wr-content">
         <h2 class="grey-text-color">Современные подъезды</h2>
-        <Slider :list="sliderEntrance"/>
-      </div>
+        <SliderCubes v-if="sliderEntrance" :list="sliderEntrance" @showmodal="showmodal=true"/>
+       </div> 
+        <!--<Slider :list="sliderEntrance"/>-->
     </section>
      <div id="security"></div>
      <paralax-block>
        <div class="wr-content">
          <h2 class="grey-text-color">Безопасная</h2>
          <h3 class="grey-text-color">придомовая территория</h3>
-         <ImagesContent :list="securityList"/>
+         <ImagesContent @showmodal="modal" :list="securityList"/>
        </div>
     </paralax-block>
      <div id="parking"></div>
      <section class="grey-bg pd-tb-50">
       <div class="wr-content">
         <h2 class="grey-text-color">Большой и удобный паркинг </h2>
-        <Slider :list="parkingList"/>
+        <SliderCubes v-if="parkingList" :list="parkingList" @showmodal="showmodal=true"/>
       </div>
     </section>
      <div id="contacts"></div>
      <paralax-block>
        <div class="wr-content">
-         <div class="contact-button">
-           <button class="button" @click="showmodal=true">
-             <span>Отправить заявку</span>
-             </button>
-         </div>
-         <modal @close="modalClose" v-if="showmodal">
-           <OrderForm @close="modalClose"/>
-         </modal>
          <h2 class="grey-text-color">Контакты</h2>
          <Contacts/>
        </div>
     </paralax-block>
     <Infra/>
+    <modal @close="modalClose" v-if="showmodal">
+        <OrderForm @close="modalClose"/>
+    </modal>
   </div>
 </template>
 
@@ -77,6 +73,9 @@ const OrderForm = () => import(
 const Infra = () => import(
   /* webpackChunkName: "Infra" */ '@/components/Infra.vue'
 )
+const SliderCubes = () => import(
+  /* webpackChunkName: "SliderCubes" */ '@/components/SliderCubes.vue'
+)
 export default {
   name: "app",
   components: {
@@ -89,7 +88,8 @@ export default {
     Modal,
     OrderForm,
     Infra,
-    StickyMenu
+    StickyMenu,
+    SliderCubes
   },
   data() {
     return {
@@ -137,6 +137,10 @@ export default {
     },
     modalClose () {
      this.showmodal = false
+    },
+    modal () {
+      console.log('app')
+      this.showmodal = true
     }
   }
 };

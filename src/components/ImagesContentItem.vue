@@ -3,35 +3,25 @@
     <div class="images-content-words accent-text-color">
       {{item.word}}
     </div>
-    <div class="images-content-item_img">
+    <div class="images-content-item_img" :class="{slider: item.slider}">
       <swiper v-if="item.slider" 
       :options="swiperOption" 
       ref="mySwiper"
       >
         <swiper-slide v-for="(slide, index) in item.slider" :key="index">
-          <LazyImg :img="{src: slide, title:item.title}"/>
+         <img :src="slide"/>
         </swiper-slide>
-         <div class="slider-pagination" slot="pagination">
-           <div class="slider-pagination_cont">
-              <div class="slider-pagination_text">Комнат:</div>
-              <div class="slider-pagination_bullets">
-                  <div class="slider-bullet" 
-                  v-for="(slide, index) in item.slider" 
-                  :key="index+'bull'"
-                  @click="showContent(index)"
-                  :class="{active: active===index}"
-                  >
-                    {{index+1}}
-                  </div>
-              </div>
-           </div>
-         </div>
+        <div class="swiper-button-prev" slot="button-prev"></div>
+        <div class="swiper-button-next" slot="button-next"></div>
       </swiper>
        <ImgDeco v-else :img="item.src" :alt="item.title" :stripsPosition="reverse ? 'right': 'left'"/>
     </div>
     <div class="images-content-item_text">
       <h4>{{item.title}}</h4>
       <p>{{item.text}}</p>
+      <button class="button" @click="showmodal">
+        <span>Отправить заявку</span>
+      </button>
     </div>
   </div>
 </template>
@@ -42,6 +32,7 @@ import ImgDeco from './ImgDeco.vue'
 import LazyImg from './LazyImg.vue'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import { ObserverMix } from './mixins.js'
+
 export default {
   mixins: [ObserverMix],
   props: {
@@ -55,14 +46,6 @@ export default {
   data () {
     return {
       swiperOption: {
-        pagination: {
-          el: '.swiper-pagination',
-          
-        },
-        effect: 'fade',
-        fadeEffect: {
-          crossFade: true
-        },
       },
       active: 0
     }
@@ -80,8 +63,11 @@ export default {
   },
   methods: {
     showContent (val) {
-    this.active = val
+     this.active = val
      this.swiper.slideTo(val, 1000, false)
+    },
+    showmodal () {
+      this.$emit('showmodal')
     }
   }
 }
@@ -106,7 +92,29 @@ export default {
 
  }
  .images-content-item_img {
-   width:640px;
+   width:640px !important;
+   position: relative;
+   /* &:before {
+     content: '';
+     position: absolute;
+     top: 0;
+     width:100%;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     z-index: 5;
+     background: $accent;
+     // mix-blend-mode: multiply;
+     mix-blend-mode: color;
+     transition: opacity 1s ease;
+   }*/
+   &:not(.slider) {
+      img {
+        max-width: 100%;
+        transform: scaleX(0.8);
+        transition: transform 1s ease;
+     }
+   }
    img {
      max-width: 100%;
    }
@@ -114,6 +122,9 @@ export default {
  .images-content-item_text {
    width:400px;
    margin-left: 30px;
+   transition: transform 1.3s ease;
+   transform: translateY(200px);
+   transition-delay: 0.3s;
  }
  .images-content-words {
    opacity:0.3;
@@ -139,6 +150,23 @@ export default {
    cursor: pointer;
    &.active {
      color: $accent;
+   }
+ }
+ .images-content-item_text {
+   p {
+     margin-bottom: 30px;
+   }
+ }
+ .in-view {
+   .images-content-item_text {
+      transform: translateY(0);
+   }
+   .images-content-item_img {
+     &:not(.slider) {
+       img  {
+        transform: scale(1.1);
+       }
+     }
    }
  }
 </style>

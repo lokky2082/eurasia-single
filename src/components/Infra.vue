@@ -18,7 +18,6 @@
           </p>
         </div>
       </div>
-     
     </div>
     <div class="infra-front infra_abs">
        <img src="./../assets/infra_front.png" alt="Инфраструктура"/>
@@ -108,10 +107,13 @@ export default {
 .infra-middle {
   position: absolute;
   left: 12%;
-  top: 40%;
+  top: 30%;
   width: 400px;
-  height: 190px;
+  height: 220px;
   overflow: hidden;
+  background: #fff;
+  padding: 30px;
+  z-index: 1000;
 }
 .infra-benefit {
   margin-bottom: 30px;
@@ -151,9 +153,9 @@ export default {
 }
 .infra-middle_cont {
   position: absolute;
-  top:0;
-  left: 0;
-  width:100%;
+  top:20px;
+  left: 20px;
+  width:calc(100% - 40px);
   transition:transform 0.5s ease;
 }
 @keyframes go {

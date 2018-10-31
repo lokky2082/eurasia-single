@@ -1,6 +1,12 @@
 <template>
   <div class="images-content">
-     <ImagesContentItem v-for="(item, i) in list" :key="'item'+i" :item="item" :reverse="i===1"/>
+     <ImagesContentItem 
+     v-for="(item, i) in list" 
+     :key="'item'+i" 
+     :item="item" 
+     :reverse="i===1"
+     @showmodal="showmodal"
+     />
   </div>
 </template>
 
@@ -17,6 +23,12 @@ export default {
   },
   components: {
     ImagesContentItem
+  },
+  methods: {
+    showmodal () {
+      console.log('modal')
+      this.$emit('showmodal')
+    }
   }
 }
 </script>

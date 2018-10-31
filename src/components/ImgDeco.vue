@@ -79,6 +79,7 @@ export default {
      width: 60px;
      position: absolute;
      bottom: -20%;
+     z-index: 10;
      span {
        width: 10px;
        background: $middle-grey;

@@ -1,13 +1,12 @@
 <template>
   <div class="sticky-menu">
-   <div class="humburger" @click="showMenu">
-      <span></span>
-      <span></span>
-      <span></span>
-  </div>
-  <div class="sticky-menu_logo">
-     <img src="./../assets/logo_eur.svg" alt="Башни Евразия">
-  </div>
+    <div class="humburger-holder"  @click="showMenu">
+       <div class="humburger">
+          <span></span>
+          <span></span>
+          <span></span>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -27,7 +26,7 @@ export default {
 <style lang="scss">
  .sticky-menu {
    width:100%;
-   position: absolute;
+   position: fixed;
    top:0;
    display: flex;
    justify-content: space-between;
@@ -42,7 +41,15 @@ export default {
  }
  .sticky-menu_logo {
    & img {
-  max-width: 100px;
+     max-width: 100px;
    }
+ }
+ .humburger-holder {
+   background: #fff;
+   width: 60px;
+   height: 60px;
+   border-radius: 50%;
+   padding: 15px 10px;
+   box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.2);
  }
 </style>
