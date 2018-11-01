@@ -22,7 +22,7 @@ export default {
     ymaps.ready(function () {
     let map = new ymaps.Map('map-complex', {
             center: coords,
-            zoom: 13,
+            zoom: 16,
             controls: ['zoomControl']
         }, {
             searchControlProvider: 'yandex#search'

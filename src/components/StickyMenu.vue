@@ -33,6 +33,7 @@ export default {
    padding: 10px;
    overflow: hidden;
    align-items: center;
+   z-index: 1000;
    &.in-view {
       position: fixed;
       background: rgba(255, 255, 255, 0.6);

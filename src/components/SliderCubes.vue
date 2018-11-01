@@ -26,13 +26,7 @@
          </div>
          <div class="slider-cubes_item_text">
             <h4>{{slide.title}}</h4>
-            <p>{{slide.text}}</p>
-            <div class="slider-cubes_btn-holder">
-              <button class="button" @click="showmodal">
-                <span>Отправить заявку</span>
-              </button>
-            </div>
-            
+            <p>{{slide.text}}</p> 
          </div>
        </div>
     </div>
@@ -138,7 +132,7 @@ export default {
   justify-content: center;
   margin-top: 20px;
 }
-.active {
+.slider-cubes .active {
    z-index: 100;
   .slider-cubes_item_text {
     animation: gotofirst 2.3s 0.5s cubic-bezier(.33,.49,.3,1.08) forwards;

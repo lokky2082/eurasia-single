@@ -9,17 +9,25 @@
       ref="mySwiper"
       >
         <swiper-slide v-for="(slide, index) in item.slider" :key="index">
-         <img :src="slide"/>
+          <img :src="slide.src"/>
+          <div class="images-content-item_img_text">
+            <span>{{slide.rooms}}-комн. квартира <span>{{slide.area}} м<sup>2</sup></span></span>
+            <span class="slider-price">{{slide.price}} руб.</span>
+          </div>
         </swiper-slide>
-        <div class="swiper-button-prev" slot="button-prev"></div>
-        <div class="swiper-button-next" slot="button-next"></div>
+        <div class="arrow-left" slot="button-prev">
+          
+        </div>
+        <div class="arrow-right" slot="button-next">
+
+        </div>
       </swiper>
        <ImgDeco v-else :img="item.src" :alt="item.title" :stripsPosition="reverse ? 'right': 'left'"/>
     </div>
     <div class="images-content-item_text">
       <h4>{{item.title}}</h4>
       <p>{{item.text}}</p>
-      <button class="button" @click="showmodal">
+      <button v-if="item.button" class="button" @click="showmodal">
         <span>Отправить заявку</span>
       </button>
     </div>
@@ -46,6 +54,11 @@ export default {
   data () {
     return {
       swiperOption: {
+        loop: true,
+        navigation: {
+          nextEl: '.arrow-right',
+          prevEl: '.arrow-left',
+        },
       },
       active: 0
     }
@@ -90,6 +103,24 @@ export default {
    font-size: 80px;
    opacity: 0.8;
 
+ }
+ .images-content-item_img .arrow-right {
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   right: 0;
+ }
+ .images-content-item_img .arrow-left {
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   left: 0;
+ }
+ .slider-price {
+  color: $accent;
+  font-size: 24px;
+  font-weight: 700;
+  padding-left: 20px;
  }
  .images-content-item_img {
    width:640px !important;
@@ -151,6 +182,10 @@ export default {
    &.active {
      color: $accent;
    }
+ }
+ .images-content-item_img_text {
+   margin-top: 30px;
+   text-align: center;
  }
  .images-content-item_text {
    p {

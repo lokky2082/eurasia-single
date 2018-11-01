@@ -64,8 +64,10 @@ export default {
   padding: 30px 40px;
   transition: transform 1s ease;
   transform: translateX(-100%);
+   z-index: 1010;
   &.active {
     transform: translateX(0);
+       
   }
 }
 .menu_close {

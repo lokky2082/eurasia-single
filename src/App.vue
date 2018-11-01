@@ -17,8 +17,7 @@
       <div class="wr-content">
         <h2 class="grey-text-color">Современные подъезды</h2>
         <SliderCubes v-if="sliderEntrance" :list="sliderEntrance" @showmodal="showmodal=true"/>
-       </div> 
-        <!--<Slider :list="sliderEntrance"/>-->
+      </div> 
     </section>
      <div id="security"></div>
      <paralax-block>

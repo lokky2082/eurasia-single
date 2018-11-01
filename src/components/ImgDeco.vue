@@ -5,7 +5,8 @@
         <span></span>
         <span></span>
     </div>
-      <LazyImg :img="{src: img, title:alt}"/>
+    <img :src="img" :alt="alt">
+    <!--<LazyImg :img="{src: img, title:alt}"/>-->
   </div>
 </template>
 
