@@ -13,9 +13,19 @@
       </div>
       <BenefitList :list="list"/>
       <div class="main-left_bot">
-        <p>Срок сдачи:{{main.ready}}</p>
-        <h3>От <span class="accent-text-color">{{main.priceFrom}}</span> рублей</h3>
+        <div class="main-left_ready">
+           <div>
+              <p>Срок сдачи: {{main.ready}}</p>
+              <h3>От <span class="accent-text-color">{{main.priceFrom}}</span> рублей</h3>
+           </div>
+           <div>
+             <InfoCircle :percent="main.readyPercent"/>
+           </div>
+        </div>
         <div class="main-left_arr">
+            <a :href="main.logoLink" class="main-logo">
+              <img src="./../assets/logo-01.svg" alt="Актив строй"/>
+            </a>
            <div class="scroll-down"></div>
         </div>
       </div>
@@ -26,11 +36,8 @@
         <img class="main-img __night" src="../assets/01_night.jpg"/>
       </div>
       <div class="main-img_text">
-        <p>Всё, что нужно для <span class="accent-text-color">счастливой</span> семейной жизни в мегаполисе</p>
+        <p>Стираем границы между природой и центром</p>
       </div>
-      <a :href="main.logoLink" class="main-logo">
-       <img src="./../assets/logo-01.svg" alt="Актив строй"/>
-      </a>
     </div>
   </section>
 </template>
@@ -38,8 +45,12 @@
 <script>
 import { getMainBenefits } from '@/actions.js'
 import { ObserverMix } from './mixins.js'
+
 const BenefitList = () => import(
   /* webpackChunkName: "BenefitList" */ '@/components/BenefitList.vue'
+)
+const InfoCircle = () => import(
+  /* webpackChunkName: "InfoCircle" */ '@/components/InfoCircle.vue'
 )
 export default {
   props: {
@@ -52,7 +63,8 @@ export default {
   },
   mixins: [ObserverMix],
   components: {
-     BenefitList
+     BenefitList,
+     InfoCircle
   },
    data () {
     return {
@@ -132,14 +144,18 @@ export default {
   }
   .main-left_bot {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
   .main-left_arr {
     position: relative;
-    margin-top: 60px;
-    height: 30px;
+    height: 120px;
+    display: flex;
+    margin-top: 20px;
   }
   .main-left_bot {
-    padding: 30px 40px;
+    padding: 10px 40px;
   }
   .main-right {
     width:65%;
@@ -176,7 +192,7 @@ export default {
   }
   .in-view {
     .main-img.__night {
-       animation: showImg 4s ease 1.5s 1 forwards;
+       animation: showImg 5s ease 2s infinite alternate;
     }
   }
   .main_title_big {
@@ -195,10 +211,18 @@ export default {
     //color: $dark-grey;
   }
   .main-logo {
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
     position: absolute;
-    top: 30px;
-    right:40px;
-    z-index: 1000;
+    img {
+      width: 120px;
+    }
+  }
+  .main-left_ready {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   @keyframes showImg {
     to {

@@ -28,7 +28,7 @@
       <h4>{{item.title}}</h4>
       <p>{{item.text}}</p>
       <button v-if="item.button" class="button" @click="showmodal">
-        <span>Отправить заявку</span>
+        <span>Выбрать квартиру</span>
       </button>
     </div>
   </div>

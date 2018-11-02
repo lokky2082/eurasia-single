@@ -34,14 +34,27 @@
         <SliderCubes v-if="parkingList" :list="parkingList" @showmodal="showmodal=true"/>
       </div>
     </section>
+     <div id="infra"></div>
+     <Infra/>
      <div id="contacts"></div>
      <paralax-block>
        <div class="wr-content">
          <h2 class="grey-text-color">Контакты</h2>
          <Contacts/>
        </div>
+        <footer class="footer">
+          <div class="footer_column phoenix">
+            <div>
+              <p>Разработано студией</p> 
+              <p><a href="https://phoenix-cg.ru/">«Креативная группа «Феникс»</a></p>
+            </div>
+            <div>
+              <img src="./assets/phoenix_logo.png" alt="Креативная группа Феникс" class="phoenix_logo">
+            </div>
+          </div>
+      </footer>
     </paralax-block>
-    <Infra/>
+    
     <modal @close="modalClose" v-if="showmodal">
         <OrderForm @close="modalClose"/>
     </modal>
@@ -98,7 +111,8 @@ export default {
       securityList: null,
       parkingList: null,
       showmodal: false,
-      main: null
+      main: null,
+      sliderRenders: null
     }
   },
   created () {
@@ -117,6 +131,9 @@ export default {
     })
     getMain().then(res => {
      this.main = res
+    })
+    getSliderEntrance().then(res => {
+     this.sliderRenders = res
     })
   },
   mounted () {

@@ -19,6 +19,9 @@
        <a href="#parking" class="scrollactive-item">
          <span>Паркинг</span>
       </a>
+       <a href="#infra" class="scrollactive-item">
+         <span>Инфраструктура</span>
+      </a>
       <a href="#contacts" class="scrollactive-item">
         <span>Контакты</span>
       </a>

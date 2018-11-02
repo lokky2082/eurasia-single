@@ -35,17 +35,6 @@
     <div class="infra-front infra_abs">
        <img src="./../assets/infra_front.png" alt="Инфраструктура"/>
     </div>
-    <footer class="footer">
-      <div class="footer_column phoenix">
-        <div>
-          <p>Разработано студией</p> 
-          <p><a href="https://phoenix-cg.ru/">«Креативная группа «Феникс»</a></p>
-        </div>
-        <div>
-          <img src="./../assets/phoenix_logo.png" alt="Креативная группа Феникс" class="phoenix_logo">
-        </div>
-      </div>
-    </footer>
   </div>
 </template>
 

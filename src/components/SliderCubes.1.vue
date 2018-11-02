@@ -52,13 +52,13 @@ export default {
   },
   methods:  {
     changeSlide (val) {
+      this.direction = val
       if (val === 'increase' && this.active < this.list.length - 1) {
         this.active = this.active + 1
       }
       if (val === 'decrease' && this.active > 0) {
         this.active = this.active - 1
       }
-      this.direction = val
     },
     showmodal () {
       this.$emit('showmodal')
@@ -98,7 +98,6 @@ export default {
   height:400px;
 }
 .slider-cubes_item_img {
-    will-change: transform;
   position: absolute;
   left: 0;
   top:0;
@@ -108,7 +107,6 @@ export default {
   }
 }
 .slider-cubes_item_text {
-    will-change: transform;
    position: absolute;
    left: 45%;
    top:55%;
@@ -137,55 +135,50 @@ export default {
 .slider-cubes .active {
    z-index: 100;
   .slider-cubes_item_text {
-    animation: gotofirst 2.3s 0.5s ease forwards;
+    animation: gotofirst 2.3s 0.5s cubic-bezier(.33,.49,.3,1.08) forwards;
   }
   .slider-cubes_item_img {
-    animation: gotofirst 1.7s ease forwards;
+    animation: gotofirst 1.7s cubic-bezier(.33,.49,.3,1.08) forwards;
   }
 }
 .increase {
   .slider-cubes_item_text {
-   
-    transform: translate3d(500%, 150%, 0) rotate(-45deg);
+    transform: translate(500%, 150%) rotate(-45deg);
   }
   .slider-cubes_item_img {
-    
-    transform: translate3d(500%, -150%, 0) rotate(-45deg);
-   
+    transform: translate(500%, -150%) rotate(-45deg);
   }
 }
 .decrease {
   .slider-cubes_item_text {
-    transform: translate3d(-500%, -150%, 0) rotate(45deg);
-    
+    transform: translate(-500%, -150%) rotate(45deg);
   }
   .slider-cubes_item_img {
-    transform: translate3d(-500%, 150%, 0) rotate(45deg);
-  
+    transform: translate(-500%, 150%) rotate(45deg);
   }
 }
 .increase.prev {
    .slider-cubes_item_img {
-     transform: translate3d(0, 0, 0) rotate(0);
+     transform: translate(0, 0) rotate(0);
      opacity: 1;
-     animation: prevtop 1.7s ease forwards;
+     animation: prevtop 1.7s cubic-bezier(.11,.44,.22,.94) forwards;
    }
    .slider-cubes_item_text{
-     transform: translate3d(0, 0, 0) rotate(0);
+     transform: translate(0, 0) rotate(0);
      opacity: 1;
-     animation: prevbot 1.7s ease forwards;
+     animation: prevbot 1.7s cubic-bezier(.11,.44,.22,.94) forwards;
    }
 }
 .decrease.prev {
    .slider-cubes_item_img {
-    transform: translate3d(0, 0, 0) rotate(0);
+     transform: translate(0, 0) rotate(0);
      opacity: 1;
-     animation: deprevtop 1.7s ease forwards;
+     animation: deprevtop 1.7s cubic-bezier(.11,.44,.22,.94) forwards;
    }
    .slider-cubes_item_text{
-     transform: translate3d(0, 0, 0) rotate(0);
+     transform: translate(0, 0) rotate(0);
      opacity: 1;
-     animation: deprevbot 1.7s ease forwards;
+     animation: deprevbot 1.7s cubic-bezier(.11,.44,.22,.94) forwards;
    }
 }
 .nav-holder {
@@ -204,31 +197,31 @@ export default {
 }
 @keyframes  gotofirst {
   to {
-    transform: translate3d(0, 0, 0) rotate(0);
+    transform: translate(0, 0) rotate(0);
     opacity: 1;
   }
 }
 @keyframes  prevtop {
   to {
-    transform: translate3d(-100%, -100%, 0) rotate(-45deg);
+    transform: translate(-100%, -100%) rotate(-45deg);
     opacity: 0;
   }
 }
 @keyframes  prevbot {
   to {
-    transform: translate3d(-100%, 100%, 0) rotate(45deg);
+    transform: translate(-100%, 100%) rotate(45deg);
     opacity: 0;
   }
 }
 @keyframes  deprevtop {
   to {
-    transform: translate3d(200%, -100% , 0) rotate(45deg);
+    transform: translate(200%, -100%) rotate(45deg);
     opacity: 0;
   }
 }
 @keyframes  deprevbot {
   to {
-    transform: translate3d(200%, 100%, 0) rotate(-45deg);
+    transform: translate(200%, 100%) rotate(-45deg);
     opacity: 0;
   }
 }
