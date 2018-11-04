@@ -2,7 +2,7 @@ import axios from "axios";
 console.log(process.env.NODE_ENV)
 let url = '/data/'
 if (process.env.NODE_ENV === 'development') {
-  url = 'http://localhost:8082/data/'
+  url = 'http://localhost:8081/data/'
 }
 const instance = axios.create({
   baseURL: url
@@ -47,7 +47,7 @@ export const getMain = () => {
     return res.data
   });
 };
-export const sliderRenders = () => {
+export const getSliderRenders = () => {
   return instance.get("renders.json").then(res => {
     return res.data
   });

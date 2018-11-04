@@ -51,21 +51,21 @@ export default {
     }
   },
   mounted () {
-   this.$el.addEventListener('wheel', this.animateImg)
+   // this.$el.addEventListener('wheel', this.animateImg)
    getInfra().then(res => {
      this.infra = res
    })
-   this.benefitsHeight = this.$refs.benefits.scrollHeight
+   //this.benefitsHeight = this.$refs.benefits.scrollHeight
   },
   beforeDestroy() {
-    this.$el.removeEventListener('wheel', this.animateImg)
+    //this.$el.removeEventListener('wheel', this.animateImg)
   },
   computed: {
-    benefitScroll() {
+    /*benefitScroll() {
       if (this.scroll) {
         return {transform: 'translateY(-' + this.scroll + 'px)'}
       }
-    }
+    }*/
   },
   methods: {
     animateImg () {

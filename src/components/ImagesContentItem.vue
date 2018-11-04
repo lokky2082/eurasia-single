@@ -27,9 +27,12 @@
     <div class="images-content-item_text">
       <h4>{{item.title}}</h4>
       <p>{{item.text}}</p>
-      <button v-if="item.button" class="button" @click="showmodal">
-        <span>Выбрать квартиру</span>
-      </button>
+      <a href="http://activ2003.ru/catalog/show_complex_5/show_turn_5/">
+         <button v-if="item.button" class="button">
+           <span>Выбрать квартиру</span>
+         </button>
+      </a>
+     
     </div>
   </div>
 </template>

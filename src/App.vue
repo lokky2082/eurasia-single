@@ -3,6 +3,7 @@
     <div id="home"></div>
     <Menu :show="showMenu" @close="toggleMenu(false)"/>
     <Main @show-menu="toggleMenu(true)" v-if="main" :main="main"/>
+     <TripleSlider :list="sliderRenders"/>
     <div id="flats"></div>
     <paralax-block>
       <StickyMenu @show-menu="toggleMenu(true)"/>
@@ -19,8 +20,10 @@
         <SliderCubes v-if="sliderEntrance" :list="sliderEntrance" @showmodal="showmodal=true"/>
       </div> 
     </section>
+    
      <div id="security"></div>
      <paralax-block>
+      
        <div class="wr-content">
          <h2 class="grey-text-color">Безопасная</h2>
          <h3 class="grey-text-color">придомовая территория</h3>
@@ -62,7 +65,13 @@
 </template>
 
 <script>
-import { getComfort, getMain, getEntrance,  getSecurity, getParking } from '@/actions.js'
+import { getComfort, 
+getMain, 
+getEntrance,  
+getSecurity, 
+getParking,
+getSliderRenders
+} from '@/actions.js'
 import Main from "./components/Main.vue"
 import Menu from "./components/Menu.vue"
 import ParalaxBlock from "./components/ParalaxBlock.vue"
@@ -88,6 +97,9 @@ const Infra = () => import(
 const SliderCubes = () => import(
   /* webpackChunkName: "SliderCubes" */ '@/components/SliderCubes.vue'
 )
+const TripleSlider = () => import(
+  /* webpackChunkName: "TripleSlider" */ '@/components/TripleSlider.vue'
+)
 export default {
   name: "app",
   components: {
@@ -101,7 +113,8 @@ export default {
     OrderForm,
     Infra,
     StickyMenu,
-    SliderCubes
+    SliderCubes,
+    TripleSlider
   },
   data() {
     return {
@@ -132,19 +145,22 @@ export default {
     getMain().then(res => {
      this.main = res
     })
-    getSliderEntrance().then(res => {
+    getSliderRenders().then(res => {
      this.sliderRenders = res
+    })
+    getEntrance().then(res => {
+     this.sliderEntrance = res
     })
   },
   mounted () {
     setTimeout(()=>{
       let preloder = document.getElementById('preloader')
       preloader.classList.add('hide')
-    }, 500)
+    }, 1000)
     setTimeout(()=>{
       let preloder = document.getElementById('preloader')
       preloader.style.display = 'none'
-    }, 700)
+    }, 1020)
   },
   methods: {
     toggleMenu(val) {
