@@ -11,8 +11,8 @@
         <swiper-slide v-for="(slide, index) in item.slider" :key="index">
           <img :src="slide.src"/>
           <div class="images-content-item_img_text">
-            <span>{{slide.rooms}}-комн. квартира <span>{{slide.area}} м<sup>2</sup></span></span>
-            <span class="slider-price">{{slide.price}} руб.</span>
+            <span>{{slide.rooms}}-комн. квартира <span>от {{slide.area}} м<sup>2</sup></span></span>
+            <span class="slider-price">от {{slide.price}} руб.</span>
           </div>
         </swiper-slide>
         <div class="arrow-left" slot="button-prev">
@@ -27,7 +27,7 @@
     <div class="images-content-item_text">
       <h4>{{item.title}}</h4>
       <p>{{item.text}}</p>
-      <a href="http://activ2003.ru/catalog/show_complex_5/show_turn_5/">
+      <a href="http://activ2003.ru/catalog/show_complex_5/show_turn_5/" target="_blank">
          <button v-if="item.button" class="button">
            <span>Выбрать квартиру</span>
          </button>

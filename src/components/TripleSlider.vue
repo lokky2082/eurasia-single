@@ -1,7 +1,10 @@
 <template>
   <div class="triple-slider">
 
-    <div class="triple-slider_container" :class="direction">
+    <div class="triple-slider_container" ref="container" :class="direction">
+      <div class="triple-slider_item prev extra" >
+       <img :src="list[list.length - 1]" alt="Жилые башни Евразия" />
+      </div>
       <div class="triple-slider_item" 
       v-for="(item, i) in list" 
       :key="i+'foto'"
@@ -11,10 +14,14 @@
           active: i === active
         }"
        >
+        <div class="triple-slider_deco"></div>
         <img 
         :src="item" 
         alt="Жилые башни Евразия" 
         />
+      </div>
+      <div class="triple-slider_item next extra">
+       <img :src="list[0]" alt="Жилые башни Евразия" />
       </div>
     </div>
     <div class="triple-slider_nav-conteiner">
@@ -50,6 +57,12 @@ export default {
       return this.active + 1
     }
   },
+  mounted () {
+   let container = this.$refs.container
+   let items = container.querySelectorAll('.triple-slider_item')
+   container.insertBefore(items[items.length - 1], container.firstChild)
+   container.appendChild(items[0])
+  },
   methods: {
     changeSlide (val) {
       this.direction = val
@@ -70,9 +83,10 @@ export default {
    position: relative;
    width: 100%;
    overflow: hidden;
-   height:100vh;
+   height:60vh;
    display: flex;
-   background: $blue;
+   //background: $blue;
+   background: $dark-grey;
    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.3);
    .arrow-left {
      color: #fff;
@@ -84,6 +98,11 @@ export default {
      color: #fff;
    }
  }
+ @media (orientation: portrait) {
+  .triple-slider {
+    height: 16vh;
+  }
+}
  .triple-slider_container {
    position: relative;
    width:100%;
@@ -98,7 +117,7 @@ export default {
    transition: all 1.7s ease;
    transform: translate(-50%, -50%);
    overflow: hidden;
-   width:100%;
+   width:60%;
    //box-shadow: 0px 0px 10px 0px $accent;
    &:after {
      content: '';
@@ -118,26 +137,26 @@ export default {
      object-fit: contain;
    }
    &.prev {
-     transform: translate(-111%, -111%) scale(0.6);
+     transform: translate(-111%, -50%);
      opacity: 1;
+     z-index: 3;
      &:after {
-       background: rgb(56, 54, 54);
-       mix-blend-mode: multiply;
-       opacity: 1;
+       background: rgb(0, 0, 0);
+       //mix-blend-mode: multiply;
+       opacity: 0.85;
      }
    }
    &.next {
-     transform: translate(30%,15%) scale(0.6); 
+     transform: translate(30%, -50%);
       &:after {
-       background: $accent;
-       mix-blend-mode: multiply;
-       opacity: 1;
+        background: rgb(0, 0, 0);
+       //mix-blend-mode: multiply;
+       opacity: 0.85;
      }
    }
    &.nextf {
      opacity: 1;
      z-index: 10;
-    
     } 
   &.nexts {
      opacity: 1;
@@ -146,7 +165,10 @@ export default {
        mix-blend-mode: multiply;
        opacity: 1;
      }
-    } 
+    }
+  &.extra {
+    z-index: 1;
+  }
    &.active {
      top: 50%;
      left: 50%;
@@ -155,6 +177,14 @@ export default {
      z-index: 10;
      & img {
        transform: scale(1);
+     }
+     .triple-slider_deco {
+       &:after {
+          transform: scaleY(1);
+        }
+        &:before {
+          transform: scaleY(1);
+        }
      }
    }
  }
@@ -167,7 +197,41 @@ export default {
   transform: translateX(-50%);
    z-index: 20;
 }
-
+.triple-slider_deco {
+  position: absolute;
+  top:0;
+   bottom: 0;
+    left: 0;
+    right: 0;
+  &:after {
+    content: '';
+    width: 6px;
+    background: $accent;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -2px;
+    z-index: 10;
+    transform-origin: top;
+    transform: scaleY(0);
+    transition: transform 1.5s ease;
+    transition-delay: 1s;
+  }
+  &:before {
+    content: '';
+    width: 6px;
+    background: $accent;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -2px;
+    z-index: 10;
+    transform-origin: bottom;
+    transform: scaleY(0);
+    transition: transform 1.5s ease;
+    transition-delay: 1s;
+  }
+}
 
 @keyframes slideActiveDecrease {
   to {

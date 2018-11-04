@@ -93,6 +93,11 @@ export default {
       height: 100%;
     }
   }
+  @media (orientation: portrait) {
+  .main {
+     min-height: 300px;
+  }
+}
   .main_title {
     width:423px;
     height:205px;
