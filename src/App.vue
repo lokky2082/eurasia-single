@@ -3,7 +3,12 @@
     <div id="home"></div>
     <Menu :show="showMenu" @close="toggleMenu(false)"/>
     <Main @show-menu="toggleMenu(true)" v-if="main" :main="main"/>
-     <TripleSlider :list="sliderRenders"/>
+    <section class="grey-bg pd-tb-50">
+      <div class="wr-content">
+        <SliderAppear  v-if="sliderRenders" :list="sliderRenders"/>
+      </div> 
+    </section>
+    <!--<TripleSlider :list="sliderRenders"/>-->
     <div id="flats"></div>
     <paralax-block>
       <StickyMenu @show-menu="toggleMenu(true)"/>
@@ -97,9 +102,10 @@ const Infra = () => import(
 const SliderCubes = () => import(
   /* webpackChunkName: "SliderCubes" */ '@/components/SliderCubes.vue'
 )
-const TripleSlider = () => import(
-  /* webpackChunkName: "TripleSlider" */ '@/components/TripleSlider.vue'
+const SliderAppear = () => import(
+  /* webpackChunkName: "SliderAppear" */ '@/components/SliderAppear.vue'
 )
+
 export default {
   name: "app",
   components: {
@@ -114,7 +120,7 @@ export default {
     Infra,
     StickyMenu,
     SliderCubes,
-    TripleSlider
+    SliderAppear
   },
   data() {
     return {

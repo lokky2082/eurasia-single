@@ -134,7 +134,9 @@ export default {
      transition: transform 4s ease;
      transition-delay: 1.6s;
      transform: scale(1.2);
-     object-fit: contain;
+      object-fit: cover;
+      object-position: center;
+      max-height: 100%;
    }
    &.prev {
      transform: translate(-111%, -50%);

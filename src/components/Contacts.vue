@@ -21,7 +21,6 @@ export default {
   },
   created () {
     getContacts().then(res => {
-      console.log(res)
       this.contacts = res
     })
   }

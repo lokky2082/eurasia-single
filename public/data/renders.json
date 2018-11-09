@@ -1,6 +1,58 @@
+
 [
-  "renders/1.jpg",
-  "renders/2.jpg",
-  "renders/3.jpg",
-  "renders/4.jpg"
+  {
+    "src": "renders/1.jpg",
+    "title": "",
+    "text": ""
+  },
+  {
+    "src": "renders/2.jpg",
+    "title": "",
+    "text": ""
+  },
+  {
+    "src": "renders/3.jpg",
+    "title": "",
+    "text": ""
+  },
+  {
+    "src": "renders/4.jpg",
+    "title": "",
+    "text": ""
+  },
+  {
+    "src": "renders/5.jpg",
+    "title": "",
+    "text": ""
+  },
+  {
+    "src": "renders/6.jpg",
+    "title": "",
+    "text": ""
+  },
+  {
+    "src": "renders/7.jpg",
+    "title": "",
+    "text": ""
+  },
+  {
+    "src": "renders/8.jpg",
+    "title": "",
+    "text": ""
+  },
+  {
+    "src": "renders/9.jpg",
+    "title": "",
+    "text": ""
+  },
+  {
+    "src": "renders/10.jpg",
+    "title": "",
+    "text": ""
+  },
+  {
+    "src": "renders/11.jpg",
+    "title": "",
+    "text": ""
+  }
 ]

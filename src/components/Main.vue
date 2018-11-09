@@ -26,7 +26,7 @@
             <a :href="main.logoLink" class="main-logo">
               <img src="./../assets/logo-01.svg" alt="Актив строй"/>
             </a>
-           <div class="scroll-down"></div>
+           <!--<div class="scroll-down"></div>-->
         </div>
       </div>
     </div>
@@ -216,12 +216,8 @@ export default {
     //color: $dark-grey;
   }
   .main-logo {
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    position: absolute;
     img {
-      width: 120px;
+      width: 144px;
     }
   }
   .main-left_ready {

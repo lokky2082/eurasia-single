@@ -27,6 +27,8 @@ p {
 .grey-bg {
   background: url(./assets/white_plaster.png);
   box-shadow: 0 0 10px 3px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 20;
 }
 .pd-tb-50 {
   padding: 50px 0;

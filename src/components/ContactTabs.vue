@@ -1,6 +1,6 @@
 <template>
   <div class="contacts-tabs">
-    <h3 class="contacts-tabs_title">Отделы продаж</h3>
+    <h3 class="contacts-tabs_title">Отдел продаж</h3>
     <div class="contacts-tabs_butons">
       <div class="contacts-tab" v-for="(tab, i) in tabs" 
       :key="i + 'tab'" 

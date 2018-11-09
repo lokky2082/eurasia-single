@@ -1,6 +1,7 @@
 <template>
   <div class="contacts-complex">
     <h3>
+      Местоположение <br>
       {{complex.title}}
     </h3>
     <div class="contacts-complex_address">
