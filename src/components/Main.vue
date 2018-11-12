@@ -88,7 +88,7 @@ export default {
   .main  {
     display: flex;
     justify-content: space-between;
-    min-height: 900px;
+    min-height: 960px;
     & > * {
       height: 100%;
     }
@@ -157,7 +157,7 @@ export default {
     position: relative;
     height: 120px;
     display: flex;
-    margin-top: 20px;
+   
   }
   .main-left_bot {
     padding: 10px 40px;

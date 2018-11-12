@@ -16,21 +16,6 @@
     "text": ""
   },
   {
-    "src": "renders/4.jpg",
-    "title": "",
-    "text": ""
-  },
-  {
-    "src": "renders/5.jpg",
-    "title": "",
-    "text": ""
-  },
-  {
-    "src": "renders/6.jpg",
-    "title": "",
-    "text": ""
-  },
-  {
     "src": "renders/7.jpg",
     "title": "",
     "text": ""
@@ -54,5 +39,26 @@
     "src": "renders/11.jpg",
     "title": "",
     "text": ""
+  },
+  {
+    "src": "renders/12.jpg",
+    "title": "",
+    "text": ""
+  },
+  {
+    "src": "renders/13.jpg",
+    "title": "",
+    "text": ""
+  },
+  {
+    "src": "renders/14.jpg",
+    "title": "",
+    "text": ""
+  },
+  {
+    "src": "renders/15.jpg",
+    "title": "",
+    "text": ""
   }
+
 ]

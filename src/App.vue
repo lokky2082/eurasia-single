@@ -5,6 +5,7 @@
     <Main @show-menu="toggleMenu(true)" v-if="main" :main="main"/>
     <section class="grey-bg pd-tb-50">
       <div class="wr-content">
+        <h2 class="grey-text-color">Комфортная жизнь</h2>
         <SliderAppear  v-if="sliderRenders" :list="sliderRenders"/>
       </div> 
     </section>
