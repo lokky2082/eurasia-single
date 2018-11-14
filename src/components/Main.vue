@@ -217,7 +217,7 @@ export default {
   }
   .main-logo {
     img {
-      width: 144px;
+      width: 172px;
     }
   }
   .main-left_ready {

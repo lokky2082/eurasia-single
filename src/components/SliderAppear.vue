@@ -39,16 +39,52 @@ export default {
       default () {
         return []
       }
+    }, 
+    loop: {
+      type: Boolean,
+      default () {
+        return true
+      }
+    },
+    animTime: {
+      type: Number,
+      default () {
+        return 3000
+      }
     }
   },
   data() {
     return {
       active: 0,
-      direction: 'increase'
+      direction: 'increase',
+      clicked: false,
+      inter: null
     }
   },
+  created () {
+   if (this.loop) {
+    this.inter =  setInterval(() => {
+      if (!this.clicked) {
+        this.animSlide()
+      } else {
+        clearInterval(this.inter)
+      }
+		}, this.animTime) 
+   }
+  },
+  beforeDestroy () {
+	  clearInterval(this.inter)
+  },
   methods:  {
+    animSlide () {
+      if(this.active < this.list.length - 1) {
+        this.active = this.active + 1
+      } else {
+        this.active = 0
+      }
+    },
     changeSlide (val) {
+      this.clicked = true
       if (val === 'increase' && this.active < this.list.length - 1) {
         this.active = this.active + 1
       }
@@ -109,11 +145,11 @@ export default {
   transform: translateX(-50%);
   top:0;
   opacity: 0;
-  transition: opacity 1s ease;
+  transition: opacity 1.5s ease;
   img {
      width: 900px;
      transform: scale(0.3);
-     transition: transform 1s ease;
+     transition: transform 1.5s ease;
      object-position: center;
      object-fit: contain;
      max-height:600px;
