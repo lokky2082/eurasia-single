@@ -71,5 +71,6 @@ export default {
   .contacts-tabs_map {
     width:100%;
     height: 300px;
+    padding-right: 20px;
   }
 </style>

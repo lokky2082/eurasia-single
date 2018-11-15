@@ -42,20 +42,29 @@ export default {
       rootMargin: '-200px',
       threshold:  [0, 0.5, 0.5, 0.75, 1]
     };
-    this.observer = new IntersectionObserver(entries => {
+    if (!('IntersectionObserver' in window)) {
+      console.log('не поддерживает IntersectionObserver')
+    } else {
+      this.observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.intersectionRatio > 0) {
-          entry.target.classList.add('grow');
+          entry.target.classList.add('grow')
         } else {
-          entry.target.classList.remove('grow');
+          entry.target.classList.remove('grow')
         }
       });
-    }, config);
+      }, config);
+    }
+    
    
   },
   mounted () {
     let img = this.$refs.img
-    this.observer.observe(img);
+    if (!('IntersectionObserver' in window)) {
+      img.classList.add('grow')
+    } else {
+      this.observer.observe(img)
+    }
   },
   methods: {
     

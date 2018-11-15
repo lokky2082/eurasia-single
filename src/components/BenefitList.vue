@@ -3,7 +3,7 @@
     <div class="benefit" v-for="(el, i) in list" :key="'ben'+ i">
       <div class="benefit-ico">
          <svg viewBox="0 0 60 60">
-           <use viewBox="0 0 60 60" :xlink:href="'/sprite.svg#' + el.icon"></use>
+           <use   viewBox="0 0 60 60" :xlink:href="'/sprite.svg#' + el.icon"></use>
         </svg>
       </div>
       <span>{{el.text}}</span>

@@ -31,6 +31,7 @@ export default {
   .contacts {
     display: flex;
     padding-bottom: 50px;
+    justify-content: space-between;
   }
   @supports (display: grid) {
   .contacts {

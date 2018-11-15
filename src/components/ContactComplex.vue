@@ -56,6 +56,8 @@ export default {
     flex-direction: column;
     justify-content: space-between;
     padding-top: 40px;
+    max-width: 500px;
+    width: 100%;
   }
   .contacts-complex_address {
     margin-top: 20px;
@@ -74,5 +76,6 @@ export default {
     width:100%;
     height:300px;
     margin-top: 50px;
+    padding: 0 20px;
   }
 </style>
